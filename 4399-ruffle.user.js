@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         4399 Flash 游戏 Ruffle 兼容器
 // @namespace    local.4399.ruffle
-// @version      1.6.0
+// @version      1.6.1
 // @description  在 iPadOS 等不支持 Flash 的浏览器里，用 Ruffle 运行 4399 的 Flash 小游戏
 // @match        *://4399.com/*
 // @match        *://*.4399.com/*
@@ -85,7 +85,7 @@
         document.documentElement.setAttribute('data-r4399-main', '1');
 
         const TAG = '__4399_RUFFLE__';
-        const VERSION = '1.6.0';
+        const VERSION = '1.6.1';
         const HOST_RE = /(^|\.)(4399\.com|4399\.net|4399\.cn|5054399\.com|img4399\.com)$/i;
         const PROXY_RE = /(^|\.)(4399\.com|4399\.net|4399\.cn|5054399\.com|img4399\.com|4399pk\.com|3304399\.net|4399sy\.com)$/i;
         const RUFFLE_VERSION = '0.7.1';
@@ -659,7 +659,8 @@
                     if (!src || seenFrames.has(src)) return;
                     let host = '';
                     try { host = new URL(src, location.href).hostname; } catch (e) { }
-                    if (!host || /^(about|javascript|data):/i.test(src) || HOST_RE.test(host)) {
+                    // 4399pk.com 等是 4399 自家的评论/积分组件，不是第三方网游
+                    if (!host || /^(about|javascript|data):/i.test(src) || PROXY_RE.test(host)) {
                         seenFrames.add(src);
                         return;
                     }
