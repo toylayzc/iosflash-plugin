@@ -6,7 +6,15 @@
 
 ## 安装
 
-1. 在 iPad 的 Safari 上安装 Tampermonkey 扩展。
+### 脚本管理器
+
+苹果应用商店里的脚本猫（ScriptCat）、Tampermonkey 需要付费，约人民币 15 元，以商店实际价格为准。不想付费的话，可以自己找自带用户脚本功能的浏览器，例如 Focus 浏览器。
+
+注意：本脚本靠 `GM_xmlhttpRequest` 代理下载跨域的 swf。如果浏览器自带的脚本功能不支持它，日志里会显示「GM 跨域代理: 不可用」，大多数 4399 游戏会加载失败。
+
+### 步骤
+
+1. 在 iPad 上装好脚本管理器（以 Safari 的 Tampermonkey 扩展为例）。
 2. 打开下面的地址，Tampermonkey 会提示安装：
    `https://raw.githubusercontent.com/toylayzc/iosflash-plugin/main/4399-debug.user.js`
 3. 第一次代理下载时 Tampermonkey 会请求跨域权限，选「总是允许」。
